@@ -4,12 +4,12 @@ using namespace std;
 void swapAlternate(int arr[], int size){
 
     int start = 0;
-    int alternate = start + 1;
 
-    while(start < size && alternate < size){
-        swap(arr[start], arr[alternate]);
+    while(start < size){
+        if(start + 1 < size){
+            swap(arr[start], arr[start + 1]);
+        }
         start += 2;
-        alternate += 2;
     } 
 }
 
