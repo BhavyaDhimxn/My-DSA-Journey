@@ -21,6 +21,9 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
         }
 
     }
+
+    sort(answer.begin(), answer.end());
+    
     return answer;
 }
 
