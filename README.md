@@ -14,6 +14,7 @@ Welcome to my **Data Structures and Algorithms** learning repository! This is wh
 - [x] Functions
 - [x] Arrays
 - [x] Binary Search
+- [x] Aggressive cows problem
 
 ## 📊 Progress Overview
 
