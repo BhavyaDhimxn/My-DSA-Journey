@@ -14,7 +14,7 @@ int main() {
     cout << "Capacity: " << vec.capacity() << endl;
 
     // Displaying elements of the vector
-    cout << "Elements in the vector: ";
+    cout << "Elements in the vector are: ";
     for (int i = 0; i < vec.size(); i++) {
         cout << vec[i] << " ";
     }
