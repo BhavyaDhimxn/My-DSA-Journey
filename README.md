@@ -15,10 +15,14 @@ Welcome to my **Data Structures and Algorithms** learning repository! This is wh
 - [x] Arrays
 - [x] Binary Search
 - [x] Aggressive cows problem
+- [x] Bubble sort
+- [x] Selection sort
+- [x] Insertion sort
+- [x] C++ STL (Arrays, Vectors, Deque)
 
 ## 📊 Progress Overview
 
 - **Start Date:** August 27, 2025
-- **Days Completed:** 14
+- **Days Completed:** 15
 - **Total Problems Solved:** 10
-- **Current Streak:** 8 days! 🔥
+- **Current Streak:** 9 days! 🔥
