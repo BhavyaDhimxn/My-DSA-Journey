@@ -24,5 +24,5 @@ Welcome to my **Data Structures and Algorithms** learning repository! This is wh
 
 - **Start Date:** August 27, 2025
 - **Days Completed:** 17
-- **Total Problems Solved:** 10
+- **Total Problems Solved:** 11
 - **Current Streak:** 11 days! 🔥
