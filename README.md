@@ -23,6 +23,6 @@ Welcome to my **Data Structures and Algorithms** learning repository! This is wh
 ## 📊 Progress Overview
 
 - **Start Date:** August 27, 2025
-- **Days Completed:** 17
-- **Total Problems Solved:** 11
-- **Current Streak:** 11 days! 🔥
+- **Days Completed:** 18
+- **Total Problems Solved:** 14
+- **Current Streak:** 2 days! 🔥
