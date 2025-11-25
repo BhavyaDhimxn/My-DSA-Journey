@@ -52,7 +52,7 @@ int main() {
     }
     
     vector<int> result = rearrangeArray(nums, n);
-    cout << "The final array is: " << endl;
+    cout << "The final array is: ";
     printArray(result, n);
 
     return 0;
