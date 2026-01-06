@@ -19,6 +19,7 @@ Welcome to my **Data Structures and Algorithms** learning repository! This is wh
 - [x] Selection sort
 - [x] Insertion sort
 - [x] C++ STL (Arrays, Vectors, Deque, List, Stack, Queue, Priority Queue, Map)
+- [x] Recursion
 
 ## 📊 Progress Overview
 
