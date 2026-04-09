@@ -1,0 +1,1 @@
+vector<int> result = moveZeroes(nums, n);
