@@ -2,7 +2,8 @@
 #include<vector>
 using namespace std;
 
-/* BRUTE FORCE METHOD:*/
+/* 
+BRUTE FORCE METHOD:
 void rotateArray(vector<int> &nums, int n, int k) {
 
     k %= n;
@@ -20,21 +21,23 @@ void rotateArray(vector<int> &nums, int n, int k) {
         nums[n - 1] = var;
 
     }
-    
+
 }
-// void rotateArray(vector<int> &nums, int n, int k) {
+*/
 
-//     vector<int> temp(n);
+void rotateArray(vector<int> &nums, int n, int k) {
 
-//     for(int i = 0; i < n; i++) {
+    vector<int> temp(n);
 
-//         temp[(i + k) % n] = nums[i];
+    for(int i = 0; i < n; i++) {
 
-//     }
+        temp[(i + k) % n] = nums[i];
 
-//     nums = temp;
+    }
 
-// }
+    nums = temp;
+
+}
 
 void printArray(vector<int> &nums, int n) {
 
