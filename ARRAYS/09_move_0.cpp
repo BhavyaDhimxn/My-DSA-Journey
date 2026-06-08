@@ -1,28 +1,60 @@
 #include<iostream>
 using namespace std;
-
+/*
+BRUTE FORCE APPROACH:
+*/
 vector<int> moveZeroes(vector<int> &nums, int n) {
-    int  j = -1;
+
+    vector<int> temp;
+
+    for(int i = 0; i < n; i++) {
+
+            if(nums[i] != 0) {
+
+                temp.push_back(nums[i]);
+
+            }
+
+        }
+
     for(int i = 0; i < n; i++) {
 
         if(nums[i] == 0) {
 
-            j = i;
-            break;
+            temp.push_back(nums[i]);
 
         }
-    }
-    for(int i = j + 1; i < n; i++) {
 
-        if(nums[i] != 0) {
-            swap(nums[i], nums[j]);
-            j++;
-        }
     }
+
+    nums = temp;
 
     return nums;
 
 }
+
+// vector<int> moveZeroes(vector<int> &nums, int n) {
+//     int  j = -1;
+//     for(int i = 0; i < n; i++) {
+
+//         if(nums[i] == 0) {
+
+//             j = i;
+//             break;
+
+//         }
+//     }
+//     for(int i = j + 1; i < n; i++) {
+
+//         if(nums[i] != 0) {
+//             swap(nums[i], nums[j]);
+//             j++;
+//         }
+//     }
+
+//     return nums;
+
+// }
 
 int main() {
 
