@@ -4,7 +4,7 @@
 using namespace std;
 
 /* 
-BRUTE FORCE METHOD:
+BRUTE FORCE APPROACH:
 
 void rotateArray(vector<int> &nums, int n, int k) {
 
@@ -72,6 +72,9 @@ void rotateArray(vector<int> &nums, int n, int k) {
 }
 */
 
+/*
+OPTIMAL APPROACH:
+*/
 void rotateArray(vector<int> &nums, int n, int k) {
 
     k %= n;
