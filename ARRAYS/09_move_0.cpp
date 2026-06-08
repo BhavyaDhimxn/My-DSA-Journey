@@ -2,7 +2,7 @@
 using namespace std;
 /*
 BRUTE FORCE APPROACH:
-*/
+
 vector<int> moveZeroes(vector<int> &nums, int n) {
 
     vector<int> temp;
@@ -32,29 +32,36 @@ vector<int> moveZeroes(vector<int> &nums, int n) {
     return nums;
 
 }
+*/
 
-// vector<int> moveZeroes(vector<int> &nums, int n) {
-//     int  j = -1;
-//     for(int i = 0; i < n; i++) {
+/*
+BETTER/OPTIMAL APPROACH:
+*/
+vector<int> moveZeroes(vector<int> &nums, int n) {
+    int  j = -1;
+    for(int i = 0; i < n; i++) {
 
-//         if(nums[i] == 0) {
+        if(nums[i] == 0) {
 
-//             j = i;
-//             break;
+            j = i;
+            break;
 
-//         }
-//     }
-//     for(int i = j + 1; i < n; i++) {
+        }
+    }
+    
+    if(j == -1) return nums;
 
-//         if(nums[i] != 0) {
-//             swap(nums[i], nums[j]);
-//             j++;
-//         }
-//     }
+    for(int i = j + 1; i < n; i++) {
 
-//     return nums;
+        if(nums[i] != 0) {
+            swap(nums[i], nums[j]);
+            j++;
+        }
+    }
 
-// }
+    return nums;
+
+}
 
 int main() {
 
