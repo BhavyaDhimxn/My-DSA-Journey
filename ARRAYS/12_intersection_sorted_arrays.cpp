@@ -5,8 +5,8 @@ using namespace std;
 
 /*
 BRUTE FORCE APPROACH:
-*/
-vector<int> unionArrays(vector<int> &num1, vector<int> &num2, int n1, int n2) {
+
+vector<int> intersectionArrays(vector<int> &num1, vector<int> &num2, int n1, int n2) {
     
     vector<int> temp;
     vector<int> vis(n2, 0);
@@ -23,54 +23,41 @@ vector<int> unionArrays(vector<int> &num1, vector<int> &num2, int n1, int n2) {
             }
 
             if(num2[j] > num1[i]) break;
-            
+
         }
     }
     return temp;
 
 }
-
+*/
 
 /*
 OPTIMAL APPROACH:
 */
-// vector<int> unionArrays(vector<int> &num1, vector<int> &num2, int n1, int n2) {
+vector<int> intersectionArrays(vector<int> &num1, vector<int> &num2, int n1, int n2) {
 
-//     vector<int> temp;
-//     int i = 0, j = 0;
+    vector<int> temp;
+    int i = 0, j = 0;
 
-//     while(i < n1 && j < n2) {
+    while(i < n1 && j < n2) {
 
-//         if(num1[i] <= num2[j]) {
-//             if(temp.size() == 0 || temp.back() != num1[i]) {
-//                 temp.push_back(num1[i]);
-//             }
-//             i++;
-//         }
-//         else {
-//             if(temp.size() == 0 || temp.back() != num2[j]) {
-//                 temp.push_back(num2[j]);
-//             }
-//             j++;
-//         }
-//     } 
+        if(num1[i] == num2[j]) {
+            
+            temp.push_back(num1[i]);
+            i++;
+            j++;
 
-//     while(i < n1) {
-//         if(temp.size() == 0 || temp.back() != num1[i]) {
-//                 temp.push_back(num1[i]);
-//             }
-//             i++;
-//     }
+        }
+        if(num1[i] > num2[j]){
+            j++;
+        }
+        if(num2[j] > num1[i]) {
+            i++;
+        }
+    } 
 
-//     while(j < n2) {
-//         if(temp.size() == 0 || temp.back() != num2[j]) {
-//                 temp.push_back(num2[j]);
-//             }
-//             j++;
-//     }
-
-//     return temp;
-// }
+    return temp;
+}
 
 int main() {
 
@@ -98,7 +85,7 @@ int main() {
 
     cout << "The union array is: ";
     
-    vector<int> nums = unionArrays(num1, num2, n1, n2);
+    vector<int> nums = intersectionArrays(num1, num2, n1, n2);
     for(int x : nums) {
     cout << x << " ";
     }
