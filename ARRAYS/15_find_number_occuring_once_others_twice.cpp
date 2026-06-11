@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<map>
 using namespace std;
 
 /*
@@ -34,12 +35,31 @@ int findNumber(vector<int> &nums, int n) {
 
 
 /*
-BRUTE FORCE APPROACH:
+BETTER APPROACH:
+*/
+int findNumber(vector<int> &nums, int n) {
 
-int missingNumber(vector<int> &nums, int N, int n) {
+    map<long long, int> mpp;
+
+    for(int i = 0; i < n; i++) {
+
+        mpp[nums[i]]++;
+
+    }
+
+    for(auto it : mpp) {
+
+        if(it.second == 1) {
+
+            return it.first;
+
+        }
+    }
+
+    return -1;
 
 }
-*/
+
 
 /*
 OPTIMAL APPROACH:
