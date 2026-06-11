@@ -58,6 +58,25 @@ int missingNumber(vector<int> &nums, int N, int n) {
 }
 */
 
+
+int missingNumber(vector<int> &nums, int N, int n) {
+
+    int xor1 = 0;
+    int xor2 = 0;
+
+    for(int i = 0; i < n; i++) {
+
+        xor1 ^= i+1;
+        xor2 ^= nums[i];
+
+    }
+
+    xor1 ^= N;
+
+    return xor1^xor2;
+
+}
+
 int main() {
 
     int N;
