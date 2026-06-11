@@ -2,6 +2,9 @@
 #include<vector>
 using namespace std;
 
+/*
+BRUTE FORCE APPROACH:
+
 int missingNumber(vector<int> &nums, int N, int n) {
 
     for(int i = 1; i <= N; i++) {
@@ -23,8 +26,37 @@ int missingNumber(vector<int> &nums, int N, int n) {
     }
     
     return -1;
-    
+
 }
+*/
+
+/*
+BRUTE FORCE APPROACH:
+
+
+int missingNumber(vector<int> &nums, int N, int n) {
+
+    vector<int> hash(N + 1, 0);
+
+    for(int i = 0; i < n; i++) {
+
+        hash[nums[i]] += 1;
+
+    }
+
+    for(int i = 1; i <= N; i++) {
+
+        if(hash[i] == 0) {
+
+            return i;
+
+        }
+    }
+
+    return -1;
+
+}
+*/
 
 int main() {
 
