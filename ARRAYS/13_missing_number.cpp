@@ -58,7 +58,9 @@ int missingNumber(vector<int> &nums, int N, int n) {
 }
 */
 
-
+/*
+OPTIMAL APPROACH:
+*/
 int missingNumber(vector<int> &nums, int N, int n) {
 
     int xor1 = 0;
