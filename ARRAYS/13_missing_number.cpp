@@ -31,7 +31,7 @@ int missingNumber(vector<int> &nums, int N, int n) {
 */
 
 /*
-BRUTE FORCE APPROACH:
+BETTER APPROACH:
 
 
 int missingNumber(vector<int> &nums, int N, int n) {
