@@ -36,7 +36,7 @@ int findNumber(vector<int> &nums, int n) {
 
 /*
 BETTER APPROACH:
-*/
+
 int findNumber(vector<int> &nums, int n) {
 
     map<long long, int> mpp;
@@ -59,16 +59,24 @@ int findNumber(vector<int> &nums, int n) {
     return -1;
 
 }
-
+*/
 
 /*
 OPTIMAL APPROACH:
-
-int missingNumber(vector<int> &nums, int n) {
-
-
-}
 */
+int findNumber(vector<int> &nums, int n) {
+
+    int ans = 0;
+
+    for(int i = 0; i < n; i++) {
+
+        ans = ans^nums[i];
+
+    }
+
+    return ans;
+}
+
 
 int main() {
 
