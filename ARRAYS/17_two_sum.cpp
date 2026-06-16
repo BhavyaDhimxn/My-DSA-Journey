@@ -6,7 +6,7 @@ using namespace std;
 
 /*
 BRUTE FORCE APPROACH:
-*/
+
 vector<int> twoSum(vector<int> &nums, int n, int k) {
     
     int sum = 0;
@@ -29,47 +29,34 @@ vector<int> twoSum(vector<int> &nums, int n, int k) {
 
     return {-1, -1};
 }
-
+*/
 
 /*
 BETTER APPROACH:
+*/
+vector<int> twoSum(vector<int> &nums, int n, int k) {
 
-int twoSum(vector<int> &nums, int n, int k) {
-
-    map<long long, int> mpp;
-    long long sum = 0;
-    int maxLen = 0;
+    map<int, int> mpp;
 
     for(int i = 0; i < n; i++) {
 
-        sum += nums[i];
+        int num = nums[i];
+        int moreNeeded = k - num;
 
-        if(sum == k) {
+        if(mpp.find(moreNeeded) != mpp.end()) {
 
-            maxLen = max(maxLen, i + 1);
-
-        }
-
-        long long rem = sum - k;
-
-        if(mpp.find(rem) != mpp.end()) {
-
-            int len = i - mpp[rem];
-            maxLen = max(maxLen, len);
+            return{mpp[moreNeeded], i};
 
         }
 
-        if(mpp.find(sum) == mpp.end()) {
-
-            mpp[sum] = i;
-
-        }
+        mpp[num] = i;
+        
     }
 
-    return maxLen;
+    return {-1, -1};
 
 }
-*/
+
 
 /*
 OPTIMAL APPROACH:
