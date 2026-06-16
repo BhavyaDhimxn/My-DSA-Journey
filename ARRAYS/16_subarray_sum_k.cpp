@@ -33,7 +33,7 @@ int longestSubarray(vector<int> &nums, int n, int k) {
 
 /*
 BETTER APPROACH:
-*/
+
 int longestSubarray(vector<int> &nums, int n, int k) {
 
     map<long long, int> mpp;
@@ -69,24 +69,39 @@ int longestSubarray(vector<int> &nums, int n, int k) {
     return maxLen;
 
 }
-
+*/
 
 /*
 OPTIMAL APPROACH:
-
+*/
 int longestSubarray(vector<int> &nums, int n, int k) {
 
-    int ans = 0;
+    int i, j = 0;
+    int maxLen = 0;
+    long long sum = nums[0];
 
-    for(int i = 0; i < n; i++) {
+    while(j < n) {
+        
+        while(i <= j && sum > k) {
 
-        ans = ans^nums[i];
+            sum -= nums[i];
+            i++;
+
+        }
+
+        if(sum == k) {
+
+            maxLen = max(maxLen, j - i + 1);
+
+        } 
+        j++;
+        if(j < n) sum += nums[j];
 
     }
 
-    return ans;
+    return maxLen;
 }
-*/
+
 
 int main() {
 
