@@ -6,10 +6,10 @@ using namespace std;
 
 /*
 BETTER APPROACH:
-*/
+
 int maxiSum(vector<int> &nums, int n) {
 
-    int maximum = 0;
+    int maximum = INT_MIN;
 
     for(int i = 0; i < n; i++) {
 
@@ -29,40 +29,37 @@ int maxiSum(vector<int> &nums, int n) {
     return maximum;
 
 }
-
+*/
 
 /*
 OPTIMAL APPROACH:
-
-int majorityElement(vector<int> &nums, int n) {
+*/
+int maxiSum(vector<int> &nums, int n) {
     
-    int el;
-    int frequency = 0;
+    int sum = 0;
+    int maximum = INT_MIN;
 
     for(int i = 0; i < n; i++) {
 
-        if(frequency == 0) {
+        sum += nums[i];
 
-            el = nums[i];
-            frequency = 1;
+        if(sum > maximum) {
 
-        }
-        else if(nums[i] == el) {
-
-            frequency++;
+            maximum = sum;
 
         }
-        else {
+        if(sum < 0) {
 
-            frequency--;
+            sum = 0;
+
         }
 
     }
 
-    return el;
+    return maximum;
 
 }
-*/
+
 
 
 int main() {
