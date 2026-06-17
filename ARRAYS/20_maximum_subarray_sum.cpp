@@ -51,7 +51,7 @@ int maxiSum(vector<int> &nums, int n) {
         if(sum < 0) {
 
             sum = 0;
-
+            
         }
 
     }
