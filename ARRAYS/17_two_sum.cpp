@@ -33,7 +33,7 @@ vector<int> twoSum(vector<int> &nums, int n, int k) {
 
 /*
 BETTER APPROACH:
-*/
+
 vector<int> twoSum(vector<int> &nums, int n, int k) {
 
     map<int, int> mpp;
@@ -56,39 +56,40 @@ vector<int> twoSum(vector<int> &nums, int n, int k) {
     return {-1, -1};
 
 }
-
+*/
 
 /*
 OPTIMAL APPROACH:
+*/
+vector<int> twoSum(vector<int> &nums, int n, int k) {
 
-int twoSum(vector<int> &nums, int n, int k) {
+    int i= 0, j = n - 1;
+    int sum = 0;
+    
+    std::sort(nums.begin(), nums.end());
 
-    int i, j = 0;
-    int maxLen = 0;
-    long long sum = nums[0];
-
-    while(j < n) {
+    while(i < j) {
         
-        while(i <= j && sum > k) {
+            sum = nums[i] + nums[j];
 
-            sum -= nums[i];
+            if(sum < k) {
+
             i++;
 
-        }
+        } 
+        if(sum > k) {
 
-        if(sum == k) {
-
-            maxLen = max(maxLen, j - i + 1);
+            j--;
 
         } 
-        j++;
-        if(j < n) sum += nums[j];
+        if(sum == k) return {i , j};
+        }
 
-    }
 
-    return maxLen;
+    return {-1, -1};
+
 }
-*/
+
 
 int main() {
 
