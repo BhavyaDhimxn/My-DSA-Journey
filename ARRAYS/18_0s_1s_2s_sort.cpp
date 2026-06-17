@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 /*
@@ -56,7 +57,7 @@ void Sort(vector<int> &arr, int n) {
 
 /*
 BETTER APPROACH
-*/
+
 void Sort(vector<int> &arr, int n) {
 
     int cnt_0 = 0, cnt_1 = 0, cnt_2 = 0;
@@ -72,6 +73,39 @@ void Sort(vector<int> &arr, int n) {
     for(int i = cnt_0; i < cnt_0 + cnt_1; i++) arr[i] = 1;
     for(int i = cnt_0 + cnt_1; i < n; i++) arr[i] = 2;   
 
+}
+*/
+
+/*
+BETTER APPROACH
+*/
+void Sort(vector<int> &arr, int n) {
+
+    int low = 0, mid = 0, high = n - 1;
+
+    while(mid <= high) {
+
+        if(arr[mid] == 0) {
+
+            swap(arr[mid], arr[low]);
+            low++;
+            mid++;
+
+        }
+        else if(arr[mid] == 1) {
+
+            mid++;
+
+        }
+        else {
+
+            swap(arr[mid], arr[high]);
+            high--;
+            
+        }
+
+    }
+    
 }
 
 void printArray(vector<int> &arr, int n) {
