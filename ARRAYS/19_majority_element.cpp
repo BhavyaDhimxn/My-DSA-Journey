@@ -6,7 +6,7 @@ using namespace std;
 
 /*
 BRUTE FORCE APPROACH:
-*/
+
 int majorityElement(vector<int> &nums, int n) {
     
     int count = 0;
@@ -32,47 +32,33 @@ int majorityElement(vector<int> &nums, int n) {
 
     return -1;
 }
-
+*/
 
 /*
 BETTER APPROACH:
-
-int longestSubarray(vector<int> &nums, int n, int k) {
+*/
+int majorityElement(vector<int> &nums, int n) {
 
     map<long long, int> mpp;
-    long long sum = 0;
-    int maxLen = 0;
 
     for(int i = 0; i < n; i++) {
 
-        sum += nums[i];
+        mpp[nums[i]]++;
 
-        if(sum == k) {
+    }
 
-            maxLen = max(maxLen, i + 1);
+    for(auto it : mpp) {
 
-        }
+        if(it.second > n/2) {
 
-        long long rem = sum - k;
-
-        if(mpp.find(rem) != mpp.end()) {
-
-            int len = i - mpp[rem];
-            maxLen = max(maxLen, len);
-
-        }
-
-        if(mpp.find(sum) == mpp.end()) {
-
-            mpp[sum] = i;
-
+            return it.first;
         }
     }
 
-    return maxLen;
+    return -1;
 
 }
-*/
+
 
 /*
 OPTIMAL APPROACH:
