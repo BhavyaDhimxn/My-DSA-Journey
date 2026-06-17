@@ -36,7 +36,7 @@ int majorityElement(vector<int> &nums, int n) {
 
 /*
 BETTER APPROACH:
-*/
+
 int majorityElement(vector<int> &nums, int n) {
 
     map<long long, int> mpp;
@@ -58,39 +58,40 @@ int majorityElement(vector<int> &nums, int n) {
     return -1;
 
 }
-
+*/
 
 /*
 OPTIMAL APPROACH:
+*/
+int majorityElement(vector<int> &nums, int n) {
+    
+    int el;
+    int frequency = 0;
 
-int longestSubarray(vector<int> &nums, int n, int k) {
+    for(int i = 0; i < n; i++) {
 
-    int i, j = 0;
-    int maxLen = 0;
-    long long sum = nums[0];
+        if(frequency == 0) {
 
-    while(j < n) {
-        
-        while(i <= j && sum > k) {
-
-            sum -= nums[i];
-            i++;
+            el = nums[i];
+            frequency = 1;
 
         }
+        else if(nums[i] == el) {
 
-        if(sum == k) {
+            frequency++;
 
-            maxLen = max(maxLen, j - i + 1);
+        }
+        else {
 
-        } 
-        j++;
-        if(j < n) sum += nums[j];
+            frequency--;
+        }
 
     }
 
-    return maxLen;
+    return el;
+
 }
-*/
+
 
 int main() {
 
