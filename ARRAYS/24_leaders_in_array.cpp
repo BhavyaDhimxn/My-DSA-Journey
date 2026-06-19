@@ -4,10 +4,11 @@
 #include<algorithm>
 using namespace std;
 
+
 vector<int> leaders(vector<int> &nums, int n) {
 
         vector<int> ans;
-
+        
         for(int i = 0; i < n; i++) {
             
             bool leader = true;
