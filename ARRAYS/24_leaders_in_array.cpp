@@ -4,6 +4,8 @@
 #include<algorithm>
 using namespace std;
 
+/*
+BRUTE FORCE APPROACH
 
 vector<int> leaders(vector<int> &nums, int n) {
 
@@ -25,6 +27,32 @@ vector<int> leaders(vector<int> &nums, int n) {
             }
             
             if(leader == true) ans.push_back(nums[i]);
+            
+        }
+
+        return ans;
+ 
+}
+*/
+
+/*
+OPTIMAL APPROACH
+*/
+vector<int> leaders(vector<int> &nums, int n) {
+
+        vector<int> ans;
+        int maximum = INT_MIN;
+
+        for(int i = n - 1; i >= 0; i--) {
+
+            if(nums[i] > maximum) {
+
+                ans.push_back(nums[i]);
+
+            }
+
+            maximum = max(maximum, nums[i]);
+            
             
         }
 
