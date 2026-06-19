@@ -6,7 +6,7 @@ using namespace std;
 
 /*
 BRUTE FORCE APPROACH:
-*/
+
 vector<int> rearrangeElements(vector<int> &nums, int n) {
     
         vector<int> pos, neg;
@@ -31,6 +31,37 @@ vector<int> rearrangeElements(vector<int> &nums, int n) {
 
         return nums;
 }
+*/
+
+/*
+OPTIMAL APPROACH:
+*/
+vector<int> rearrangeElements(vector<int>& nums, int n) {
+        
+    vector<int> temp(n, 0);
+    int i = 0, j = 1;
+
+    for(int index = 0; index < n; index++) {
+
+        if(nums[index] > 0) {
+
+            temp[i] = nums[index];
+            i += 2;
+
+        } 
+        else {
+
+            temp[j] = nums[index];
+            j += 2;
+
+        }
+
+    }
+
+    return temp;
+
+}
+
 
 
 int main() {
