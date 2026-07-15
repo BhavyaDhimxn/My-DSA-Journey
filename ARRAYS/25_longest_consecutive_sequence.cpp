@@ -6,7 +6,7 @@ using namespace std;
 
 /*
 BETTER APPROACH:
-*/
+
 
 bool ls(vector<int>& nums, int num) {
         
@@ -46,37 +46,40 @@ int longestConSeq(vector<int> &nums, int n) {
     return longest;
 
 }
-
+*/
 
 /*
-OPTIMAL APPROACH:
-
-int maxiSum(vector<int> &nums, int n) {
+BETTER APPROACH
+*/
+int longestConSeq(vector<int> &nums, int n) {
     
-    int sum = 0;
-    int maximum = INT_MIN;
-
+    int longest = 1;
+    int count = 0;
+    int lastSmaller = INT_MIN;
+    if(n == 0) return 0;
+    sort(nums.begin(), nums.end());
     for(int i = 0; i < n; i++) {
 
-        sum += nums[i];
+        if(nums[i] - 1 == lastSmaller) {
 
-        if(sum > maximum) {
-
-            maximum = sum;
+            count += 1;
+            lastSmaller = nums[i];
 
         }
-        if(sum < 0) {
+        else if(nums[i] != lastSmaller) {
 
-            sum = 0;
-            
+            count = 1;
+            lastSmaller = nums[i];
+
         }
 
+        longest = max(longest,count);
     }
 
-    return maximum;
+    return longest;
 
 }
-*/
+
 
 
 int main() {
