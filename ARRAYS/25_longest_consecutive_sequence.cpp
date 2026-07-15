@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<map>
+#include<unordered_set>
 #include<algorithm>
 using namespace std;
 
@@ -50,7 +51,7 @@ int longestConSeq(vector<int> &nums, int n) {
 
 /*
 BETTER APPROACH
-*/
+
 int longestConSeq(vector<int> &nums, int n) {
     
     int longest = 1;
@@ -79,7 +80,47 @@ int longestConSeq(vector<int> &nums, int n) {
     return longest;
 
 }
+*/
 
+/*
+OPTIMAL APPROACH
+*/
+
+int longestConSeq(vector<int>& nums, int n) {
+        
+        int n = nums.size();
+        int longest = 1;
+        int count = 0;
+        unordered_set<int> st;
+
+        if(n == 0) return 0;
+        for(int i = 0; i < n; i++) {
+
+            st.insert(nums[i]);
+
+        }
+        for(auto it : st) {
+
+            if(st.find(it - 1) == st.end()) {
+
+                count = 1;
+                int x = it;
+
+                while(st.find(x + 1) != st.end()) {
+
+                    count += 1;
+                    x = x + 1;
+
+                }
+
+            }
+
+            longest = max(longest,count);
+        }
+
+        return longest;
+
+    }
 
 
 int main() {
