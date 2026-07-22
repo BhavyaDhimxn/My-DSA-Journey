@@ -1,34 +1,37 @@
 #include <iostream>
 #include <vector>
-#include <iomanip> // Used to align the numbers neatly
 
 using namespace std;
 
-    vector<vector<int>> generateMatrix(int n) {
-        vector<vector<int>> ans(n, vector<int>(n));
-        int left = 0, right = n - 1;
-        int top = 0, bottom = n - 1;
-        int count = 1;
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
 
+        if (matrix.empty() || matrix[0].empty()) return {};
+
+        int n = matrix.size();
+        int m = matrix[0].size();
+        int left = 0, right = m - 1;
+        int top = 0, bottom = n - 1;
+
+        vector<int> ans;
         while(top <= bottom && left <= right) {
             for(int i = left; i <= right; i++) {
-                ans[top][i] = count++;
+                ans.push_back(matrix[top][i]);
             }
             top++;
             for(int i = top; i <= bottom; i++) {
-                ans[i][right] = count++;
+                ans.push_back(matrix[i][right]);
             }
             right--;
             if(bottom >= top) {
                 for(int i = right; i >= left; i--) {
-                    ans[bottom][i] = count++;
+                    ans.push_back(matrix[bottom][i]);
                 }
                 bottom--;  
             }
         
             if(right >= left) {
                 for(int i = bottom; i >= top; i--) {
-                    ans[i][left] = count++;
+                    ans.push_back(matrix[i][left]);
                 }
                 left++;
             }
@@ -36,24 +39,36 @@ using namespace std;
         return ans;
     }
 
-
 int main() {
+    int rows, cols;
+    
+    cout << "Enter number of rows: ";
+    cin >> rows;
 
-    int n;
-    cout << "Enter the matrix size (n): ";
-    cin >> n;
+    
+    cout << "Enter number of columns: ";
+    cin >> cols; 
 
-    vector<vector<int>> result = generateMatrix(n);
+    vector<vector<int>> matrix(rows, vector<int>(cols));
 
-    // 3. Print the generated spiral matrix
-    cout << "\nGenerated " << n << "x" << n << " Spiral Matrix:\n" << endl;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-
-            cout << setw(4) << result[i][j] << " ";
+    cout << "\nEnter the elements row by row:\n";
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << "Element [" << i << "][" << j << "]: ";
+            cin >> matrix[i][j];
         }
-        cout << "\n";
     }
+
+    vector<int> result = spiralOrder(matrix);
+
+    cout << "\nSpiral Order Traversal Array:\n[ ";
+    for (size_t i = 0; i < result.size(); i++) {
+        cout << result[i];
+        if (i < result.size() - 1) {
+            cout << ", ";
+        }
+    }
+    cout << " ]" << endl;
 
     return 0;
 }
