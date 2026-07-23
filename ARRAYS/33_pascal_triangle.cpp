@@ -3,25 +3,25 @@
 
 using namespace std;
 
-    vector<vector<int>> generate(int numRows) {
-        vector<vector<int>> answer;
-        
-        for(int i = 1; i <= numRows; i++) {
-            vector<int> ans;
-            long long res = 1;
+vector<vector<int>> generate(int numRows) {
+    vector<vector<int>> answer;
+    
+    for(int i = 1; i <= numRows; i++) {
+        vector<int> ans;
+        long long res = 1;
+        ans.push_back(res);
+
+        for(int j = 1; j < i; j++) {
+            res *= i - j;
+            res /= j;
             ans.push_back(res);
-
-            for(int j = 1; j < i; j++) {
-                res *= i - j;
-                res /= j;
-                ans.push_back(res);
-            }
-
-            answer.push_back(ans);
         }
 
-        return answer;
+        answer.push_back(ans);
     }
+
+    return answer;
+}
 
 
 int main() {
