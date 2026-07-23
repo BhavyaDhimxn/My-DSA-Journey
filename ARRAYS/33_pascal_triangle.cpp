@@ -6,14 +6,14 @@ using namespace std;
 vector<vector<int>> generate(int numRows) {
     vector<vector<int>> answer;
     
-    for(int i = 1; i <= numRows; i++) {
+    for(int i = 0; i < numRows; i++) {
         vector<int> ans;
         long long res = 1;
         ans.push_back(res);
 
-        for(int j = 1; j < i; j++) {
+        for(int j = 0; j < i; j++) {
             res *= i - j;
-            res /= j;
+            res /= j + 1;
             ans.push_back(res);
         }
 
