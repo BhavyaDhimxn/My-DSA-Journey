@@ -1,6 +1,10 @@
 #include <iostream>
 #include <vector>
+#include<map>
 using namespace std;
+
+/*
+BRUTE FORCE APPROACH
 
 vector<int> majorityElement(vector<int>& nums) {         
     int n = nums.size();         
@@ -22,6 +26,36 @@ vector<int> majorityElement(vector<int>& nums) {
     }          
     return ans;      
 } 
+*/
+
+/*
+BETTER APPROACH
+
+vector<int> majorityElement(vector<int>& nums) {
+    int n = nums.size();
+    int minimum = (n/3) + 1;
+    vector<int> ans;
+    map<int, int> mpp;
+
+    for(int i = 0; i < n; i++) {
+
+        mpp[nums[i]]++;
+        if(mpp[nums[i]] == minimum) {
+
+            ans.push_back(nums[i]);
+
+        }
+        if(ans.size() == 2) break;
+
+    }
+
+    sort(ans.begin(), ans.end());
+
+
+    return ans;
+
+}
+*/
 
 
 int main() {
