@@ -38,17 +38,20 @@ vector<vector<int>> threeSum(vector<int>& nums) {
     set<vector<int>> st;
 
     for(int i = 0; i < n; i++) {
-        set<int> hashset;
+
         for(int j = i + 1; j < n; j++) {
+            set<int> hashset;
+            for(int k = j + 1; k < n; k++) {
+                int sum = nums[i] + nums[j] + nums[k];
 
-            int third = -(nums[i] + nums[j]);
-            if(hashset.find(third) != hashset.end()) {
-                vector<int> temp = {nums[i], nums[j], third};
-                sort(temp.begin(), temp.end());
-                st.insert(temp);
+                int fourth = target - sum;
+                if(hashset.find(third) != hashset.end()) {
+                    vector<int> temp = {nums[i], nums[j], third};
+                    sort(temp.begin(), temp.end());
+                    st.insert(temp);
+                }
+                hashset.insert(nums[j]);
             }
-            hashset.insert(nums[j]);
-
         }
     }
 
@@ -60,35 +63,42 @@ vector<vector<int>> threeSum(vector<int>& nums) {
 /*
 OPTIMAL APPROACH
 */
-vector<vector<int>> threeSum(vector<int>& nums) {
-
+vector<vector<int>> fourSum(vector<int>& nums, int target) {
+    
     int n = nums.size();
     vector<vector<int>> ans;
     sort(nums.begin(), nums.end());
 
     for(int i = 0; i < n; i++) {
-
         if(i > 0 && nums[i - 1] == nums[i]) continue;
-        int j = i + 1;
-        int k = n - 1;
 
-        while(j < k) {
-            int sum = nums[i] + nums[j] + nums[k];
-            if(sum < 0) {
-                j++;
+        for(int j = i + 1; j < n; j++) {
+            if(j > i + 1 && nums[j - 1] == nums[j]) continue;
+            int k = j + 1;
+            int l = n - 1;
+
+            while(k < l) {
+
+                long long sum = nums[i] + nums[j];
+                sum += nums[k];
+                sum += nums[l];
+
+                if(sum < target) {
+                    k++;
+                }
+                else if(sum > target) {
+                    l--;
+                }
+                else {
+                    vector<int> temp = {nums[i], nums[j], nums[k], nums[l]};
+                    ans.push_back(temp);
+                    k++;
+                    l--;
+                    while(k < l && nums[k - 1] == nums[k]) k++;
+                    while(k < l && nums[l + 1] == nums[l]) l--;
+                }
             }
-            else if(sum > 0) {
-                k--;
-            }
-            else{
-                vector<int> temp = {nums[i], nums[j], nums[k]};
-                ans.push_back(temp);
-                j++;
-                k--;
-                while(j < k && nums[j - 1] == nums[j]) j++;
-                while(j < k && nums[k + 1] == nums[k]) k--;
-            }
-        } 
+        }
     }
     return ans;
 }
@@ -97,7 +107,11 @@ int main() {
     int n;
     cout << "Enter the number of elements: ";
     cin >> n;
-
+    
+    int target;
+    cout << "Enter your target: ";
+    cin >> target;
+    
     vector<int> nums(n);
     cout << "Enter " << n << " integers: ";
     for (int i = 0; i < n; i++) {
@@ -105,7 +119,7 @@ int main() {
     }
 
 
-    vector<vector<int>> result = threeSum(nums);
+    vector<vector<int>> result = fourSum(nums, target);
 
     cout << "Unique triplets that sum up to 0:" << endl;
 
