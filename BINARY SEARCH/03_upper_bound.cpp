@@ -1,0 +1,50 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+
+int upperBound(vector<int>& nums, int n, int x) {
+
+    int low = 0;
+    int high = n - 1;
+    int ans = -1;
+
+    while(low <= high) {
+        
+        int mid = (low + high)/2;
+
+        if(nums[mid] > x){
+            ans = mid;
+            high = mid - 1;  
+        }
+        else {
+            low = mid + 1;
+        } 
+
+    }
+
+    return ans;
+}
+
+
+int main() {
+
+    int n;
+    cout << "Enter the size of array: ";
+    cin >> n;
+
+    vector<int> nums(n);
+    cout << "Enter the elements in your array: ";
+    for(int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+
+    int x;
+    cout << "Enter the target: ";
+    cin >> x;
+    
+    int result = upperBound(nums, n, x);
+    cout << "The upper Bound is: " << result << endl;
+
+    return 0;
+}
