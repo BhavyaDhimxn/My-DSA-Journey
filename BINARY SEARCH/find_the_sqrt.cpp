@@ -21,7 +21,7 @@ int findSqrt(int num) {
     int low = 1, high = num;
 
     while (low <= high) {
-        int mid = low + (high - low) / 2;
+        long long mid = (low + high) / 2;
         if (mid <= num / mid) {
             low = mid + 1;  // Look for a larger match
         } else {

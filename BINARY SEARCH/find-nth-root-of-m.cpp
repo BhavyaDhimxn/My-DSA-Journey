@@ -3,7 +3,7 @@ using namespace std;
 
 /*
 BRUTE FORCE APPROACH:
-*/
+
 int findSqrt(int m ,int n) {
     int i = 1;
     while(i <= m) {
@@ -12,25 +12,27 @@ int findSqrt(int m ,int n) {
     }
     return -1;
 }
+*/
 
 
 /*
 OPTIMAL APPROACH:
-
+*/
 int findSqrt(int m, int n) {
-    int low = 1, high = num;
+    int low = 1, high = m;
 
     while (low <= high) {
-        int mid = low + (high - low) / 2;
-        if (mid <= num / mid) {
-            low = mid + 1;  // Look for a larger match
+        int mid = low + high / 2;
+        if ((long long)pow(mid, n) == m) return mid;
+        if ((long long)pow(mid, n) < m) {
+            low = mid + 1;  
         } else {
-            high = mid - 1; // Look for a smaller match
+            high = mid - 1; 
         }
     }
-    return high;
+    return -1;
 }
-*/
+
 
 int main() {
     int number;
