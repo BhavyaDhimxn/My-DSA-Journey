@@ -34,7 +34,7 @@ public:
         
         while(low <= high) {
             int mid = low + (high - low)/2;
-            int day = 1; long long load = 0;
+            int day = 1; int load = 0;
 
             for(int i = 0; i < n; i++) {
                 if(load + weights[i] > mid) {
