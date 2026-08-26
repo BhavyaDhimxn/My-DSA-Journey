@@ -34,6 +34,10 @@ int minMaxDist(vector<int> &nums, int cows) {
     return ans;
 }
 */
+
+/*
+OPTIMAL APPROACH:
+*/
 int minMaxDist(vector<int> &nums, int cows) {
     sort(nums.begin(), nums.end());
     int n = nums.size();
@@ -41,7 +45,7 @@ int minMaxDist(vector<int> &nums, int cows) {
 
     while(low <= high) {
         int mid = (low + high)/2;
-        
+
         if(canWePlace(nums, mid, cows) == true) low = mid + 1;
         else high = mid - 1;
     }
