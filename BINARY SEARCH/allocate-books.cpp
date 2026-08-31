@@ -17,6 +17,8 @@ int studentCounter(vector<int> &nums, int pages) {
     }
     return studentCount;
 }
+/*
+BRUTE FORCE APPROACH:
 
 int allocateBooks(vector<int> &nums, int students, int n) {
     long long maxi = accumulate(nums.begin(), nums.end(), 0);
@@ -26,6 +28,24 @@ int allocateBooks(vector<int> &nums, int students, int n) {
         if(studentCounter(nums, i) == students) return i;
     }
     return -1;  
+}
+*/
+
+/*
+OPTIMAL APPROACH:
+*/
+int allocateBooks(vector<int> &nums, int students, int n) {
+    int low = *max_element(nums.begin(), nums.end());
+    int high = accumulate(nums.begin(), nums.end(), 0);
+
+    if(students > n) return -1;
+    while(low <= high) {
+        int mid = (low + high)/2;
+
+        if(studentCounter(nums, mid) <= students) high = mid - 1;
+        else low = mid + 1;
+    }
+    return low;
 }
 
 int main() {
