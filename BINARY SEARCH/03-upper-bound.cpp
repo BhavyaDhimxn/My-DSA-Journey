@@ -2,30 +2,31 @@
 #include<vector>
 using namespace std;
 
+/*
+LINEAR SEARCH:
 
 int upperBound(vector<int>& nums, int n, int x) {
+    for(int i = n - 1; i >= 0; i--) {
+        if(nums[i] < x) return i;
+    }
+    return n;
+}
+*/
 
-    int low = 0;
-    int high = n - 1;
-    int ans = -1;
+/*
+BINARY SEARCH:
+*/
+int upperBound(vector<int>& nums, int n, int x) {
+    int low = 0, high = n - 1;
 
     while(low <= high) {
-        
         int mid = (low + high)/2;
 
-        if(nums[mid] > x){
-            ans = mid;
-            high = mid - 1;  
-        }
-        else {
-            low = mid + 1;
-        } 
-
+        if(nums[mid] < x) low = mid + 1;
+        else high = mid - 1;
     }
-
-    return ans;
+    return high;
 }
-
 
 int main() {
 
