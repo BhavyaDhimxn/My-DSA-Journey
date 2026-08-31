@@ -1,49 +1,46 @@
 class Solution {
-private:
-    // Helper function to check if a maximum sum target is feasible with k splits
-    bool canSplit(vector<int>& nums, int k, int target_sum) {
-        int subarray_count = 1;
-        int current_sum = 0;
+public:
+    int splitCount(vector<int> &nums, int sum) {
+        int split = 1, sumOfSplit = 0;
 
-        for (int num : nums) {
-            if (current_sum + num > target_sum) {
-                // Start a new subarray
-                subarray_count++;
-                current_sum = num;
-                
-                // If we need more than k subarrays, this target is too small
-                if (subarray_count > k) {
-                    return false;
-                }
-            } else {
-                current_sum += num;
+        for(int i = 0; i < nums.size(); i++) {
+            if(sumOfSplit + nums[i] <= sum) sumOfSplit += nums[i];
+            else {
+                split++;
+                sumOfSplit = nums[i];
             }
         }
-        return true;
+        return split;
     }
 
-public:
-    int splitArray(std::vector<int>& nums, int k) {
-        // low: The maximum element in the array
-        int low = *std::max_element(nums.begin(), nums.end());
-        
-        // high: The sum of all elements in the array
-        int high = std::accumulate(nums.begin(), nums.end(), 0);
-        
-        int result = high;
+    /*
+    BRUTE FORCE APPROACH:
 
-        // Binary search for the minimized maximum sum
-        while (low <= high) {
-            int mid = low + (high - low) / 2; // Prevents potential integer overflow
+    int splitArray(vector<int>& nums, int k) {
+        long long maxi = accumulate(nums.begin(), nums.end(), 0);
 
-            if (canSplit(nums, k, mid)) {
-                result = mid;       // Target is achievable, try to find a smaller maximum
-                high = mid - 1;
-            } else {
-                low = mid + 1;      // Target is too small, increase the allowed maximum
-            }
+        if(k > nums.size()) return -1;
+        for(int i = *max_element(nums.begin(), nums.end()); i <= maxi; i++) {
+            if(splitCount(nums, i) <= k) return i;
         }
+        return -1;
+    }
+    */
 
-        return result;
+    /*
+    OPTIMAL APPROACH:
+    */
+    int splitArray(vector<int>& nums, int k) {
+        int low = *max_element(nums.begin(), nums.end());
+        int high = accumulate(nums.begin(), nums.end(), 0);
+
+        if(k > nums.size()) return -1;
+        while(low <= high) {
+            int mid = (low + high)/2;
+
+            if(splitCount(nums, mid) <= k) high = mid - 1;
+            else low = mid + 1;
+        }
+        return low;
     }
 };
