@@ -2,6 +2,8 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
+/*
+BRUTE FORCE APPROACH:
 
 int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
     int index = -1, maxCount = 0;
@@ -11,6 +13,35 @@ int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
         for(int j = 0; j < m; j++) {
             countOnes += matrix[i][j];
         }
+        if(countOnes > maxCount){
+            maxCount = countOnes;
+            index = i;
+        }
+    }
+    return index;
+}
+*/
+
+/*
+OPTIMAL APPROACH:
+*/
+int lowerBound(vector<int> &nums, int n, int x) {
+    int low = 0, high = n - 1;
+
+    while(low <= high) {
+        int mid = (low + high)/2;
+
+        if(nums[mid] >= x) high = mid - 1;
+        else low = mid + 1;
+    }
+    return low;
+}
+
+int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
+    int index = -1, maxCount = 0;
+
+    for(int i = 0; i < n; i++) {
+        int countOnes = m - lowerBound(matrix[i], m, 1);
         if(countOnes > maxCount){
             maxCount = countOnes;
             index = i;
