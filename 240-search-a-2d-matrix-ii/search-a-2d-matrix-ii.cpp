@@ -2,7 +2,7 @@ class Solution {
 public:
     /*
     BRUTE FORCE APPROACH:
-    */
+    
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         int n = matrix.size();
         int m = matrix[0].size();
@@ -14,11 +14,11 @@ public:
         }
         return false;
     }
-    
+    */
 
     /*
     BETTER APPROACH:
-    
+    */
     bool binarySearch(vector<int> &nums, int target) {
         int n = nums.size();
         int low = 0, high = n - 1;
@@ -36,13 +36,17 @@ public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         int n = matrix.size();
         int m = matrix[0].size();
+        int ans = false;
 
         for(int i = 0; i < n; i++) {
-            if(matrix[i][m - 1] >= target) return binarySearch(matrix[i], target);
+            if(matrix[i][m - 1] >= target) {
+                ans = binarySearch(matrix[i], target);
+                if(ans == true) return ans;
+            } 
         }
-        return false;
+        return ans;
     }
-    */
+    
 
     /*
     OPTIMAL APPROACH:
