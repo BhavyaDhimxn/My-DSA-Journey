@@ -18,7 +18,7 @@ public:
 
     /*
     BETTER APPROACH:
-    */
+    
     bool binarySearch(vector<int> &nums, int target) {
         int n = nums.size();
         int low = 0, high = n - 1;
@@ -46,23 +46,21 @@ public:
         }
         return ans;
     }
-    
+    */
 
     /*
     OPTIMAL APPROACH:
-    
+    */
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         int n = matrix.size(), m = matrix[0].size();
-        int low = 0, high = (n*m) - 1;
+        int row = 0, col = m - 1;
 
-        while(low <= high) {
-            int mid = (low + high)/2;
-
-            if(matrix[mid/m][mid%m] == target) return true;
-            else if(matrix[mid/m][mid%m] > target) high = mid - 1;
-            else low = mid + 1;
+        while(row < n && col >= 0) {
+            if(matrix[row][col] == target) return true;
+            else if(matrix[row][col] > target) col--;
+            else row++;
         }
         return false;
     }
-    */
+    
 };
