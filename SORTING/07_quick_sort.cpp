@@ -16,7 +16,7 @@ int partition(vector<int> &nums, int low, int high) {
             i++;
 
         }
-         while(nums[j] > pivot && j > low){
+        while(nums[j] > pivot && j > low){
 
             j--;
 
