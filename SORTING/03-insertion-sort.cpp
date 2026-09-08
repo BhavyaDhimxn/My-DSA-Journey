@@ -3,28 +3,22 @@
 using namespace std;
 
 void insertionSort(int arr[], int n) {
-
+    //Element at index i is selected every time to be correctly placed.
     for(int i = 0; i < n; i++) {
-
+        //creates ranges 0 - i.
         int j = i;
-        while(j > 0 && arr[j - 1] > arr[j]) {
-
-            swap(arr[j - 1], arr[j]);
+        //j > 0 due to the comparison.
+        while(j > 0 && arr[j] < arr[j - 1]) {
+            swap(arr[j], arr[j - 1]);
             j--;
-
         }
-
     }
-
 }
 
 void printArray(int arr[], int n) {
-
     for(int i = 0; i < n; i++) {
-
         cout << arr[i] << " ";
     }
-
     cout << endl;
 }
 
