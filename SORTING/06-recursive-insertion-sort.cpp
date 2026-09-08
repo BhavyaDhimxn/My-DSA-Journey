@@ -2,27 +2,24 @@
 #include<algorithm>
 using namespace std;
 
-void insertionSort(int arr[], int i, int n) {
-
+void recursiveInsertionSort(int arr[], int i, int n) {
+    //Return as i = n, as we will go out of bounds.
     if(i == n) return;
-
+    //In every call j will take the value of i, placing each i at correct position in the range.
     int j = i;
-    while(j > 0 && arr[j - 1] > arr[j]){
-        swap(arr[j - 1], arr[j]);
+    //Loop to do placing.
+    while(j > 0 && arr[j] < arr[j - 1]) {
+        swap(arr[j], arr[ j - 1]);
         j--;
     }
-
-    insertionSort(arr, i + 1, n);
-
+    //Call recursive function, increasing the value of i.
+    recursiveInsertionSort(arr, i + 1, n);
 }
 
 void printArray(int arr[], int n) {
-
     for(int i = 0; i < n; i++) {
-
         cout << arr[i] << " ";
     }
-
     cout << endl;
 }
 
@@ -38,7 +35,7 @@ int main() {
         cin >> arr[i];
     }
 
-    insertionSort(arr, 0, n);
+    recursiveInsertionSort(arr, 0, n);
     cout << "Sorted array is: ";
     printArray(arr, n);
 
