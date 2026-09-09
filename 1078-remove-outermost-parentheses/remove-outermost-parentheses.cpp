@@ -1,5 +1,8 @@
 class Solution {
 public:
+    /*
+    OPTIMAL APPROACH:
+    */
     string removeOuterParentheses(string s) {
         int n = s.length();
         int counter = 0;
