@@ -9,6 +9,7 @@ void selectionSort(int arr[], int n) {
         //Initialise a variable with the leftmost(minimum) index as just decalaration gives it garbage value.
         //Case: If no smaller element is found, the leftmost element will be swapped with variable containing garbage value.
         int minimum = i;
+        
         //Inner loop -> From (i + 1) to n - 1.
         //Start != 0 as in 2nd iteration 0th element is correctly placed.
         //Start != i as it is taken as the minimum, no need to compare it with itself.
