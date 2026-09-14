@@ -9,7 +9,7 @@ void bubbleSort(int arr[], int n) {
     //Loop starts from nth element(so that nth element of every range gets sorted)
     for(int i = n - 1; i >= 0; i--) {
         //Starts from 1 so that in 1st iteration element at the 0th index can be compared.
-        for(int j = 1; j < n; j++) {
+        for(int j = 1; j <= i; j++) {
             //Push the greatest element to (n-1)th position.
             if(arr[j] < arr[j - 1]) swap(arr[j], arr[j - 1]);
         }
@@ -25,7 +25,7 @@ void bubbleSort(int arr[], int n) {
     for(int i = n - 1; i >= 0; i--) {  
         int swapped = 0;
         //Starts from 1 so that in 1st iteration element at the 0th index can be compared.
-        for(int j = 1; j < n; j++) {
+        for(int j = 1; j <= i; j++) {
             //Push the greatest element to (n-1)th position.
             if(arr[j] < arr[j - 1]) {
                 swap(arr[j], arr[j - 1]);
