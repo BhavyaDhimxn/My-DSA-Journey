@@ -6,12 +6,14 @@ using namespace std;
 BRUTE FORCE APPROACH:
 
 void bubbleSort(int arr[], int n) {
-    //Loop starts from nth element(so that nth element of every range gets sorted)
-    for(int i = n - 1; i >= 0; i--) {
-        //Starts from 1 so that in 1st iteration element at the 0th index can be compared.
-        for(int j = 1; j <= i; j++) {
-            //Push the greatest element to (n-1)th position.
-            if(arr[j] < arr[j - 1]) swap(arr[j], arr[j - 1]);
+    //Outer loop -> Runs (n - 1) to 0. We place the rightmost(maximum) element of the current range correctly in each iteration.
+    //Reduce the range in each iteration from right as rightmost(maximum) element gets correctly placed.
+    for(int i = (n - 1); i >= 0; i--) {
+        //Inner loop -> Runs 0 to (i - 1). Till (i - 1) as every iteration we only have to traverse the range given by outer loop.
+        //Not till i as we compare the current with next element, to prevent out of bound error.
+        for(int j = 0; j < i; j++) {
+            //Check for greater element and swap alternately. Push the greatest element to ith position.
+            if(arr[j] > arr[j + 1]) swap(arr[j], arr[j + 1]);
         }
     }
 }
@@ -21,21 +23,27 @@ void bubbleSort(int arr[], int n) {
 OPTIMAL APPROACH:
 */
 void bubbleSort(int arr[], int n) {
-    //Loop starts from nth element(so that nth element of every range gets sorted)
+    //Outer loop -> Runs (n - 1) to 0. We place the rightmost(maximum) element of the current range correctly in each iteration.
+    //Reduce the range in each iteration from right as rightmost(maximum) element gets correctly placed.
     for(int i = n - 1; i >= 0; i--) {  
-        int swapped = 0;
-        //Starts from 1 so that in 1st iteration element at the 0th index can be compared.
-        for(int j = 1; j <= i; j++) {
-            //Push the greatest element to (n-1)th position.
-            if(arr[j] < arr[j - 1]) {
-                swap(arr[j], arr[j - 1]);
-                swapped++;
+        //Optimisation -> Initialise a variable to keep track if any swapping happens.
+        bool swapped = 0;
+        //Inner loop -> Runs 0 to (i - 1). Till (i - 1) as every iteration we only have to traverse the range given by outer loop.
+        //Not till i as we compare the current with next element, to prevent out of bound error.
+        for(int j = 0; j < i; j++) {
+            //Check for greater element and swap alternately. Push the greatest element to ith position.
+            //If Swapping takes place, mark the variable as true.
+            if(arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+                swapped = 1;
             }
         }
         //if no swap took place in the first iteration -> already sorted.
-        if(swapped == 0) break;
+        //Use break instead of return, if there is more code after this check in the function, it wont execute.
+        if(!swapped) break;
     }
 }
+
 
 void printArray(int arr[], int n) {
     for(int i = 0; i < n; i++) {

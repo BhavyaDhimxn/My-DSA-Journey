@@ -3,16 +3,22 @@
 using namespace std;
 
 void recursiveInsertionSort(int arr[], int i, int n) {
-    //Return as i = n, as we will go out of bounds.
-    if(i == n) return;
-    //In every call j will take the value of i, placing each i at correct position in the range.
-    int j = i;
-    //Loop to do placing.
-    while(j > 0 && arr[j] < arr[j - 1]) {
-        swap(arr[j], arr[ j - 1]);
+    //Base Case: If i becomes greater than n - 1, we return.
+    if(i > n - 1) return;
+    //Initialise a variable with value of previous element of i.
+    int j = i - 1;
+    //Initialise a key, which stores the vale of selected element.
+    int key = arr[i];
+
+    //Loop -> Runs while j >= 0, and jth element/(i - 1)th is greater than key.
+    while(j >= 0 && arr[j] > key) {
+        //Right shift the element greater than key and reduce j.
+        arr[j + 1] = arr[j];
         j--;
     }
-    //Call recursive function, increasing the value of i.
+    //Put the key in the correct index.
+    arr[j + 1] = key;
+    //Recursive call with increased range.
     recursiveInsertionSort(arr, i + 1, n);
 }
 
@@ -35,7 +41,7 @@ int main() {
         cin >> arr[i];
     }
 
-    recursiveInsertionSort(arr, 0, n);
+    recursiveInsertionSort(arr, 1, n);
     cout << "Sorted array is: ";
     printArray(arr, n);
 
