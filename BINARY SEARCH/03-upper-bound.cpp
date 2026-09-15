@@ -22,10 +22,10 @@ int upperBound(vector<int>& nums, int n, int x) {
     while(low <= high) {
         int mid = (low + high)/2;
 
-        if(nums[mid] < x) low = mid + 1;
+        if(nums[mid] <= x) low = mid + 1;
         else high = mid - 1;
     }
-    return high;
+    return low;
 }
 
 int main() {
