@@ -13,7 +13,7 @@ void insertionSort(int arr[], int n) {
         int key = arr[i];
 
         //Inner loop -> Runs while j >= 0, and jth element/(i - 1)th is greater than key.
-        while(j > 0 && arr[j] > key) {
+        while(j >= 0 && arr[j] > key) {
             //Shift the greater element to right and reduce j.
             arr[j + 1] = arr[j];
             j--;
