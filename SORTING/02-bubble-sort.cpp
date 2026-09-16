@@ -8,7 +8,7 @@ BRUTE FORCE APPROACH:
 void bubbleSort(int arr[], int n) {
     //Outer loop -> Runs (n - 1) to 0. We place the rightmost(maximum) element of the current range correctly in each iteration.
     //Reduce the range in each iteration from right as rightmost(maximum) element gets correctly placed.
-    for(int i = (n - 1); i >= 0; i--) {
+    for(int i = (n - 1); i > 0; i--) {
         //Inner loop -> Runs 0 to (i - 1). Till (i - 1) as every iteration we only have to traverse the range given by outer loop.
         //Not till i as we compare the current with next element, to prevent out of bound error.
         for(int j = 0; j < i; j++) {
@@ -23,9 +23,9 @@ void bubbleSort(int arr[], int n) {
 OPTIMAL APPROACH:
 */
 void bubbleSort(int arr[], int n) {
-    //Outer loop -> Runs (n - 1) to 0. We place the rightmost(maximum) element of the current range correctly in each iteration.
+    //Outer loop -> Runs (n - 1) to 1. We place the rightmost(maximum) element of the current range correctly in each iteration.
     //Reduce the range in each iteration from right as rightmost(maximum) element gets correctly placed.
-    for(int i = n - 1; i >= 0; i--) {  
+    for(int i = n - 1; i > 0; i--) {  
         //Optimisation -> Initialise a variable to keep track if any swapping happens.
         bool swapped = 0;
         //Inner loop -> Runs 0 to (i - 1). Till (i - 1) as every iteration we only have to traverse the range given by outer loop.
