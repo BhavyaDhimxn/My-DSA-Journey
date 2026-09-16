@@ -17,7 +17,13 @@ public:
         while(low <= high) {
             //Initialise the mid index.
             int mid = (low + high)/2;
-
+            
+            //Optimisation -> if low and high are on the indeces such that nums[low] <= nums[high]
+            //No need to further check as in this the minimum will be returned.
+            if(nums[low] <= nums[high]) {
+                ans = min(ans, nums[low]);
+                break;
+            }
             //Check if left half is sorted.
             if(nums[low] <= nums[mid]) {
                 //Store the minimum by comparing the smallest among ans and lowest element.
