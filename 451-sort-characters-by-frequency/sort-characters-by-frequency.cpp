@@ -1,9 +1,8 @@
 class Solution {
+/*
+OPTIMAL APPROACH:
+*/
 public:
-
-    /*
-    OPTIMAL APPROACH:
-    */
     string frequencySort(string s) {
         //Create a map to store the char and its frequency.
         //Stores ony the chars and freq of chars in string(k unique characters). 
