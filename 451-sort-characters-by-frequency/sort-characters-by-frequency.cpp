@@ -24,7 +24,7 @@ public:
             if (buckets[freq].empty()) continue;
             
             // Core Addition: Sort characters within the same bucket alphabetically
-            sort(buckets[freq].begin(), buckets[freq].end());
+            //sort(buckets[freq].begin(), buckets[freq].end());
             
             // Append characters to the result
             for (char ch : buckets[freq]) {
