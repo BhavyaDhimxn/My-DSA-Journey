@@ -35,6 +35,7 @@ public:
         return result;
     }
 };
+
 /*
 BRUTE FORCE APPROACH:
 
