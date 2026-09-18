@@ -2,6 +2,9 @@
 #include<string>
 using namespace std;
 
+/*
+BRUTE FORCE APPROACH:
+
 int maxSubstrings(string s) {
     int n = s.length();
     int ans = 0;
@@ -12,6 +15,15 @@ int maxSubstrings(string s) {
         }
     }
     return ans;
+}
+*/
+
+/*
+OPTIMAL APPROACH:
+*/
+int maxSubstrings(string s) {
+    int n = s.length();
+    return (n*(n + 1))/2;
 }
 
 int main() {
