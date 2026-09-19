@@ -37,7 +37,7 @@ public:
 
         int start = 0, max_len = 1;
         
-        for (int i = 0; i < s.length(); ++i) {
+        for (int i = 0; i < s.length(); i++) {
             // Odd length palindrome (centered at i)
             expandAroundCenter(s, i, i, start, max_len);
             // Even length palindrome (centered between i and i+1)
