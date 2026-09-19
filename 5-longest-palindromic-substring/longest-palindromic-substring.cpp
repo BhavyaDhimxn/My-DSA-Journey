@@ -1,64 +1,82 @@
 /*
+BRUTE FORCE APPROACH:
+
 class Solution {
 public:
-
-    
-    BRUTE FORCE APPROACH:
-    
     string longestPalindrome(string s) {
-        //Create an empty string to store the final answer.
-        string ans = "";
+        //Create an empty string that will store the final answer.
+        string answer = "";
+        //Initialise a variable with length of string.
+        int n = s.length();
 
-        //Outer Loop -> Runs through the entire string to build them from i to (n - 1).
-        //Gives next loop the starting Char in each iteration.
-        for(int i = 0; i < s.length(); i++) {
-            //Create a temp string that stores all the substrings.
+        //Outer Loop -> Gives the starting index of a substring.
+        for(int i = 0; i < n; i++) {
+            //Create a temporary string that stores all the substrings.
+            //Inside the outer loop as it has to reset every time to store unique substring.
             string temp = "";
-            //Inner Loop -> Runs from i to (n - 1) -> Generates all the substrings.
-            for(int j = i; j < s.length(); j++) {
-                //Stores all the substrings in each iteration.
+            
+            //Inner Loop -> Generates all the substrings -> runs the main logic/check for each substring.
+            for(int j = i; j < n; j++) {
+                //Store the jthChar in temp to generate substrings.
                 temp += s[j];
-                //Create another string to store the reversed substring for later comparison
+                //Create another dummy string to reverse temp for further comparison.
                 string temp2 = temp;
                 reverse(temp2.begin(), temp2.end());
-                //Update the answer if temp is palindromic and greater in size.
-                if(temp.length() > ans.length() && temp == temp2) ans = temp;
+
+                //Update answer if longer string is found and it is palindromic.
+                if(temp.length() > answer.length() && temp == temp2) {
+                    answer = temp;
+                }
             }
         }
-        return ans;
+        //Return the final updated answer.
+        return answer;
     }
 };
 */
 
+/*
+OPTIMAL APPROACH:
+*/
 class Solution {
 public:
     string longestPalindrome(string s) {
-        if (s.empty()) return "";
+        //Initialise a variable with length of string.
+        int n = s.length();
+        
+        //Return sitself if size is = 1.
+        if(n == 1) return s;
+        //Create 2 variables 1. Stores the starting index of substring. 2. Stores the max length of string.
+        int start = 0, maxLength = 1;
 
-        int start = 0, max_len = 1;
-        
-        for (int i = 0; i < s.length(); i++) {
-            // Odd length palindrome (centered at i)
-            expandAroundCenter(s, i, i, start, max_len);
-            // Even length palindrome (centered between i and i+1)
-            expandAroundCenter(s, i, i + 1, start, max_len);
+        //Main Loop -> Runs from 0 to (n - 1).
+        for(int i = 0; i < n; i++) {
+
+            //Call the expanding funtion for odd length. 1 centre.
+            expandFromCentre(s, i, i, start, maxLength);
+            //Call the expanding funtion for even length. Centre between 2 indices.
+            expandFromCentre(s, i, i + 1, start, maxLength);
         }
-        
-        return s.substr(start, max_len);
+        //Return the substring which starts from start and has length = maxLength.
+        return s.substr(start, maxLength);
     }
 
 private:
-    // Helper function to expand around the center
-    void expandAroundCenter(const string& s, int left, int right, int& start, int& max_len) {
-        while (left >= 0 && right < s.length() && s[left] == s[right]) {
+    //Create a helper void function which updates the start and maxLength.
+    void expandFromCentre(string& s, int left, int right, int& start, int& maxLength) {
+        //Run a loop to increment pointer while we are in bounds and left element = right one.
+        //Sets the range to be a palindromic substring.
+        while(left >= 0 && right < s.length() && s[left] == s[right]) {
             left--;
             right++;
         }
-        
-        // Update the start index and max length if a longer palindrome is found
-        if (right - left - 1 > max_len) {
+
+        //Update start and maxLength if the length is greater.
+        if((right - left - 1) > maxLength) {
+            maxLength = right - left - 1;
             start = left + 1;
-            max_len = right - left - 1;
         }
     }
 };
+
+
