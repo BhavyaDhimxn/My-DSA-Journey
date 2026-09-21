@@ -42,4 +42,6 @@ int main() {
     cout << head->data << endl;
     //Print what it points to.
     cout << head->next;
+
+    return 0;
 }
