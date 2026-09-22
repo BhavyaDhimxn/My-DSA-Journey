@@ -14,10 +14,12 @@ public:
         node->val = node->next->val;
         //Create a temporary pointer pointing to the next node.
         //To delete next node in future, as our current node becomes the next node.
-        ListNode* temp = node->next;
+        //Not compulsory as we do not need to remove it from memory.
+        //ListNode* temp = node->next;
         //Make the current node point the next of next node.
         node->next = node->next->next;
-        //Delete the next node that is floating
-        delete temp;
+        //Delete the next node that is floating.
+        //Not compulsory as we do not need to remove it from memory.
+        //delete temp;
     }
 };
