@@ -25,16 +25,20 @@ Node* convertArraytoLL(vector<int>& nums) {
 }
 
 Node* insertAtTail(Node* head, int val) {
-    //Create a new node and point its next to head.
+    //If no node exists -> Create a new node.
     if(head == NULL) {
         Node* newNode = new Node(val, nullptr);
         return newNode;
     } 
+    //Create a temp storing head.
     Node* temp = head;
+    //Loop -> Runs till the last node.
     while(temp->next != NULL){
         temp = temp->next;
     }
+    //when last node reached create a new node pointing to null.
     Node* newNode = new Node(val, nullptr);
+    //point the last node to our new node.
     temp->next = newNode;
 
     return head;
