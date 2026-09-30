@@ -9,18 +9,18 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        ListNode* front = node->next;
-        node->val = front->val;
-        node->next = front->next;
+        // ListNode* front = node->next;
+        // node->val = front->val;
+        // node->next = front->next;
         //Copy the value of next node into the given.
         //Overwrite current node.
-        //node->val = node->next->val;
+        node->val = node->next->val;
         //Create a temporary pointer pointing to the next node.
         //To delete next node in future, as our current node becomes the next node.
         //Not compulsory as we do not need to remove it from memory.
         //ListNode* temp = node->next;
         //Make the current node point the next of next node.
-        //node->next = node->next->next;
+        node->next = node->next->next;
         //Delete the next node that is floating.
         //Not compulsory as we do not need to remove it from memory.
         //delete temp;
