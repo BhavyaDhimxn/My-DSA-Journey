@@ -43,6 +43,23 @@ Node* convertArrayToDLL(vector<int>& nums) {
     return head;
 }
 
+Node* deleteHead(Node* head) {
+    //Edge case: If there is <= 1 nodes.
+    if(head == NULL || head->next == NULL) return NULL;
+    //Store the head in temp Node.
+    Node* temp = head;
+    //Make next node to be the head.
+    head = head->next;
+    //Make the new head's prev point to null.
+    head->prev = nullptr;
+    //Make the original head's next point to null.
+    //Done to disconnect it completely.
+    temp->next = nullptr;
+    //Delete the original head.
+    delete temp;
+    return head;
+}
+
 void printDLL(Node* head) {
     Node* temp = head;
     while(temp) {
@@ -55,7 +72,8 @@ void printDLL(Node* head) {
 int main() {
     vector<int> nums = {1, 2, 3, 4, 5};
     Node* head = convertArrayToDLL(nums);
-    printDLL(head);
+    Node* newHead = deleteHead(head);
+    printDLL(newHead);
 
     return 0;
 }
