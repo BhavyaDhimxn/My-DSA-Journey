@@ -10,8 +10,12 @@
  */
 class Solution {
 public:
+
+    /*
+    BRUTE FORCAE APPROACH:
+
     ListNode* reverseList(ListNode* head) {
-        //Edge Case: If DLL is empty;
+        //Edge Case: If LL is empty;
         if(head == NULL) return NULL;
         //Store the HEAD and declare a stack.
         ListNode* temp = head;
@@ -36,5 +40,28 @@ public:
             temp = temp->next;
         }
         return head;
+    }
+    */
+
+    /*
+    OPTIMAL APPROACH:
+    */
+    ListNode* reverseList(ListNode* head) {
+        //Edge Case: if no node in LL.
+        if(head == NULL) return NULL;
+        //Store the current, prev and next nodes.
+        ListNode* current = head;
+        ListNode* prev = NULL;
+        ListNode* next = NULL;
+
+        //Loop -> Reach the last node.
+        while(current != NULL) {
+            //Store the next node.
+            next = current->next;
+            current->next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
     }
 };
