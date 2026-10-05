@@ -15,19 +15,24 @@ public:
         ListNode* dummyNode = new ListNode();
         //Store it as current node for traversal.
         ListNode* current = dummyNode;
-        //Store the HEADS of the given LLs.
-        ListNode* temp1 = l1;
-        ListNode* temp2 = l2;
         //Initialise carry to track the carry over digit after summation.
         int carry = 0;
 
-        //Loop -> Runs till the last node of max length LL.
-        while(temp1 != NULL || temp2 != NULL) {
+        //Loop -> Runs till the last node of max length LL or till carry has a value.
+        while(l1 != NULL || l2 != NULL || carry != 0) {
             //Initialise sum in every iteration with the carry over digit.
             int sum = carry;
-            //Add the digits of given LLs to it.
-            if(temp1) sum += temp1->val;
-            if(temp2) sum += temp2->val;
+
+            //If nodes in either LLs exist add the digits of given LLs to it.
+            //Move to the next node.
+            if(l1){
+                sum += l1->val;
+                l1 = l1->next;
+            } 
+            if(l2){
+                sum += l2->val;
+                l2 = l2->next;
+            }
 
             //Create new node with unit place digit of sum.
             ListNode* newNode = new ListNode(sum % 10);
@@ -38,15 +43,6 @@ public:
             current->next = newNode;
             //Make this new node the current node.
             current = current->next;
-
-            //If nodes in either exist move to the next.
-            if(temp1 != NULL) temp1 = temp1->next;
-            if(temp2 != NULL) temp2 = temp2->next;
-        }
-        //If carry has a value after complete traversal, add it as the last node.
-        if(carry) {
-            ListNode* newNode = new ListNode(carry);
-            current->next = newNode;
         }
         //return the required HEAD.
         return dummyNode->next;
