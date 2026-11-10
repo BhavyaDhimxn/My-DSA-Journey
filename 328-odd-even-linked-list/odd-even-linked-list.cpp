@@ -22,7 +22,7 @@ public:
         ListNode* temp = head;
         //Traverse on the LL using temp.
         //Loop: Runs till the last odd node.
-        while(temp->next != NULL && temp->next->next != NULL) {
+        while(temp != NULL && temp->next != NULL) {
             //Store node data into vector.
             nums.push_back(temp->val);
             //Move to the next node.
@@ -36,7 +36,7 @@ public:
         temp = head->next;
         //Traverse on the LL using temp.
         //Loop: Runs till the last even node.
-        while(temp->next != NULL && temp->next->next != NULL) {
+        while(temp != NULL && temp->next != NULL) {
             //Store node data into vector.
             nums.push_back(temp->val);
             //Move to the next node.
