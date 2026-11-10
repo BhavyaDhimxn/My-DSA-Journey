@@ -64,22 +64,39 @@ public:
 };
 */
 
+/*
+OPTIMAL SOLUTION:
+*/
+
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
+
+        //Edge Case: 0 or 1 node exist.
         if(head == NULL || head->next == NULL) return head;
 
+        //Initialise 3 nodes:
+        //Odd node pointing to the head.
         ListNode* odd = head;
+        //Even node pointing to the 2nd node.
         ListNode* even = head->next;
+        //Even Head node that will be used at the end as it will not change.
         ListNode* evenHead = head->next;
 
+        //Loop: Runs till the last node.
+        //Since even node is always ahead of odd node, no need to use odd node for loop.
         while(even != NULL && even->next != NULL) {
+            //Point the nodes to the correct nodes.
+            //Now all the odd->odd and even->even.
             odd->next = odd->next->next;
             even->next = even->next->next;
 
+            //Move the nodes to the next odd/even node.
             odd = odd->next;
             even = even->next;
         }
+
+        //Finally, connect the last odd node with the first even node.
         odd->next = evenHead;
         return head;
     }
